@@ -1,0 +1,23 @@
+# Contributor: <kontakt.zuf(at)gmail.com>
+pkgname=panini
+pkgver=0.62.83
+pkgrel=2
+pkgdesc="A portable panoramic image viewer with 3D rotation and perspective control, using OpenGL in the Qt framework"
+url="http://sourceforge.net/projects/pvqt/"
+depends=('qt>=4.0.0' 'zlib')
+makedepends=('qt>=4.0.0' 'zlib')
+conflicts=('pvqt' 'panini')
+arch=('i686' 'x86_64')
+replaces=('pvqt' 'panini')
+backup=()
+source=("http://dfn.dl.sourceforge.net/sourceforge/pvqt/$pkgname-$pkgver-src.zip")
+md5sums=('df22994035d564268f29f2b49c1c9b50')
+license=('GPL')
+
+build() {
+    cd $startdir/src/$pkgname-0.62
+    qmake
+    make release || return 1
+    mkdir -p "$pkgdir/usr/bin"
+    cp bin/$pkgname "$pkgdir/usr/bin"
+}
