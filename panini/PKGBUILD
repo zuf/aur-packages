@@ -15,9 +15,9 @@ md5sums=('df22994035d564268f29f2b49c1c9b50')
 license=('GPL')
 
 build() {
-    cd $startdir/src/$pkgname-0.62
+    cd "${srcdir}/${pkgname}-0.62"
     qmake
     make release || return 1
     mkdir -p "$pkgdir/usr/bin"
-    cp bin/$pkgname "$pkgdir/usr/bin"
+    cp bin/${pkgname} "${pkgdir}/usr/bin"
 }
