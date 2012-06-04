@@ -10,9 +10,9 @@ url="https://code.google.com/p/tangogis/"
 license=('GPL')
 depends=('curl' 'bluez' 'gconf' 'libexif' 'libsoup')
 optdepends=('gpsd: for GPS support')
-source=(http://www.tangogps.org/downloads/$pkgname-$pkgver.tar.gz build.patch)
-source=(https://tangogis.googlecode.com/files/$pkgname-$pkgver.tar.bz2)
-md5sums=('885e9ca505ea12a4286c649abc23d80f')
+source=(https://tangogis.googlecode.com/files/$pkgname-$pkgver.tar.bz2 build.patch)
+md5sums=('885e9ca505ea12a4286c649abc23d80f'
+         '73a32a85a9c5e2e0729f82d2a20c0c2d')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
