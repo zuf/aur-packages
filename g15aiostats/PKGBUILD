@@ -15,12 +15,12 @@ source=(https://g15aiostats.googlecode.com/files/$pkgname-$pkgver.tar.gz)
 md5sums=('6aad631dac3065c98713b774d0619af7')
 
 build() {
-cd $startdir/src/$pkgname-$pkgver
-./configure
-/usr/bin/make || return 1
-/bin/mkdir -p $startdir/pkg/usr/bin/
-/bin/cp $startdir/src/$pkgname-$pkgver/src/g15aiostats $startdir/pkg/usr/bin/
-/bin/mkdir -p $startdir/pkg/usr/share/man/
-/bin/cp -r man1 $startdir/pkg/usr/share/man/
+        cd "$srcdir"/$pkgname-$pkgver
+        ./configure --prefix=/usr
+        /usr/bin/make
 }
-
+ 
+package() {
+        cd "$srcdir"/$pkgname-$pkgver
+        make DESTDIR="$pkgdir" install
+}
